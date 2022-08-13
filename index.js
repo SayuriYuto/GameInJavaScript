@@ -35,3 +35,19 @@ console.log(person.firstName);
 let selection = 'firstName'
 person[selection] = 'this is also a name';
 console.log(person);
+
+let color = ['red' , 34]; //empty array
+console.log(color.length);
+
+function greet(name,Lname){
+    console.log(name + ' ' + Lname);
+} // no need of a semicolon
+
+function square(side){
+    return side*side;
+}
+
+greet('John','joshua');
+greet('Kai');
+
+console.log(square(10));
