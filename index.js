@@ -12,4 +12,10 @@ console.log(interest);
 let name = 'Name';
 let age = 59;
 let isApproved = true;
+let fort = undefined;
+let selectedColor = null; // to clear the value
 
+// JavaScript is a Dynamic Language
+// type of variable can change in runtime
+name = 89;
+console.log(typeof name); 
