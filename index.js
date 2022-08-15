@@ -12,13 +12,24 @@ const image = new Image();
 image.src = "./img/map/IntroMapView.png";
 
 const playerimg = new Image();
-playerimg.src = "img/KingHuman/Idle (78x58).png";
+playerimg.src = "./img/KingHuman/Idlecropped.png";
 
+const playerwidth = ((playerimg.width/11)/1.5)-10;
+const playerheight = ((playerimg.height)/1.5)-10;
 // when image loads then only call the drawImage function
 // image view level set to 300% in Tiled
 image.onload = () => {
 	c.drawImage(image, 60, 0);
 	// player load should be after map
-	c.drawImage(playerimg, canvas.width / 2 - 100, canvas.height / 2 + 103);
+	c.drawImage(
+		playerimg,
+		0,
+		0,
+		playerimg.width/11,
+		playerimg.height,
+		(canvas.width / 2) - 150,
+		(canvas.height / 2) + 67,
+        playerwidth,
+		playerheight
+	);
 }
-
