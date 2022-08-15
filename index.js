@@ -9,7 +9,7 @@ c.fillRect(0,0,canvas.width,canvas.height)
 
 // create html image object to add images from Js
 const image = new Image();
-image.src = './Kings and Pigs/Tiledset/IntroMapView.png'
+image.src = './img/map/IntroMapView.png'
 
 // when image loads then only call the drawImage function
 // image view level set to 300% in Tiled
