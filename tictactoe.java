@@ -23,10 +23,10 @@ class Tester {
                         System.out.print("O|");
                         break;
                 }
-                if(j<=1){
+                if (j <= 1) {
                     System.out.print("_");
                 }
-                
+
             }
             System.out.println();
         }
@@ -114,36 +114,36 @@ class Tester {
         posx = lasmovpos / 3;
         posy = lasmovpos % 3;
         // if (turn < 9) {
-            if (lasmovpos % 2 != 0 && turn < 9) { // check if the las move was a non corner so that we only need to check 2
-                // directions
-                int rowprod = board[posx][posy] * board[posx][(posy + 1) % 3] * board[posx][(posy + 2) % 3]; // row
-                                                                                                             // check
-                int colprod = board[posx][posy] * board[(posx + 1) % 3][posy] * board[(posx + 2) % 3][posy]; // col
-                                                                                                             // check
-                // win
-                if (rowprod == 27 || rowprod == 125) {
-                    return 1;
-                } else if (colprod == 27 || colprod == 125) {
-                    return 1;
-                }
-            } else if(lasmovpos % 2 == 0 && turn < 9){
-                int rowprod = board[posx][posy] * board[posx][(posy + 1) % 3] * board[posx][(posy + 2) % 3]; // row
-                                                                                                             // check
-                int colprod = board[posx][posy] * board[(posx + 1) % 3][posy] * board[(posx + 2) % 3][posy]; // col
-                                                                                                             // check
-                int diaprod = board[posx][posy] * board[(posx + 1) % 3][(posy + 1) % 3]
-                        * board[(posx + 2) % 3][(posy + 2) % 3]; // dia check
-                if (rowprod == 27 || rowprod == 125) {
-                    return 1;
-                } else if (colprod == 27 || colprod == 125) {
-                    return 1;
-                } else if (diaprod == 27 || diaprod == 125) {
-                    return 1;
-                }
-            }else{
-            //System.out.println("The Game was a Tie!");
-            return 2;
+        if (lasmovpos % 2 != 0 && turn < 9) { // check if the las move was a non corner so that we only need to check 2
+            // directions
+            int rowprod = board[posx][posy] * board[posx][(posy + 1) % 3] * board[posx][(posy + 2) % 3]; // row
+                                                                                                         // check
+            int colprod = board[posx][posy] * board[(posx + 1) % 3][posy] * board[(posx + 2) % 3][posy]; // col
+                                                                                                         // check
+            // win
+            if (rowprod == 27 || rowprod == 125) {
+                return 1;
+            } else if (colprod == 27 || colprod == 125) {
+                return 1;
             }
+        } else if (lasmovpos % 2 == 0 && turn < 9) {
+            int rowprod = board[posx][posy] * board[posx][(posy + 1) % 3] * board[posx][(posy + 2) % 3]; // row
+                                                                                                         // check
+            int colprod = board[posx][posy] * board[(posx + 1) % 3][posy] * board[(posx + 2) % 3][posy]; // col
+                                                                                                         // check
+            int diaprod = board[posx][posy] * board[(posx + 1) % 3][(posy + 1) % 3]
+                    * board[(posx + 2) % 3][(posy + 2) % 3]; // dia check
+            if (rowprod == 27 || rowprod == 125) {
+                return 1;
+            } else if (colprod == 27 || colprod == 125) {
+                return 1;
+            } else if (diaprod == 27 || diaprod == 125) {
+                return 1;
+            }
+        } else {
+            // System.out.println("The Game was a Tie!");
+            return 2;
+        }
         // System.out.println("The Game was a Tie!");
         return 0;
     }
@@ -236,7 +236,7 @@ class Tester {
             }
             turn++;
         }
-        if(checkwin(steps[turn-1]) == 2){
+        if (checkwin(steps[turn - 1]) == 2) {
             System.out.println("Game was a Tie!");
         }
         System.out.println("Game has ended!");
