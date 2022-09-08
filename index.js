@@ -28,7 +28,7 @@ class Sprite {
 	}
 
 	draw(){
-		c.drawImage(this.image, 60, 0);
+		c.drawImage(this.image, this.position.x, this.position.y);
 	}
 }
 
@@ -38,6 +38,24 @@ const background = new Sprite({
 		y: 0,
 	},image:image
 });
+
+const keys = {
+	w : {
+		pressed: false
+	},
+	a:{
+		pressed:false
+	},
+	s:{
+		pressed:false
+	},
+	d:{
+		pressed:false
+	},
+	jump:{
+		pressed:false
+	}
+}
 
 function animate() {
 	window.requestAnimationFrame(animate);
@@ -56,7 +74,9 @@ function animate() {
 		playerheight
 	);
 
-	if()
+	if(keys.w.pressed){
+		background.position.y=background.position.y-3;
+	}
 }
 animate();
 
@@ -66,19 +86,53 @@ window.addEventListener("keydown", (e) => {
 	// console.log(e.key);
 	switch (e.key) {
 		case "w":
-			console.log("w");
+			// console.log("w");
+			keys.w.pressed = true;
 			break;
 		case "a":
-			console.log("a");
+			// console.log("a");
+			keys.a.pressed= true;
 			break;
 		case "s":
-			console.log("s");
+			// console.log("s");
+			keys.s.pressed = true;
 			break;
 		case "d":
-			console.log("d");
+			// console.log("d");
+			keys.d.pressed = true;
 			break;
 		case " ":
-			console.log("jump");
+			// console.log("jump");
+			keys.jump.pressed = true;
+			break;
+		default:
+			break;
+	}
+});
+
+window.addEventListener("keyup", (e) => {
+	// e stands for event
+	// console.log(e.key);
+	switch (e.key) {
+		case "w":
+			console.log("w key up");
+			keys.w.pressed = false;
+			break;
+		case "a":
+			// console.log("a");
+			keys.a.pressed= false;
+			break;
+		case "s":
+			// console.log("s");
+			keys.s.pressed = false;
+			break;
+		case "d":
+			// console.log("d");
+			keys.d.pressed = false;
+			break;
+		case " ":
+			// console.log("jump");
+			keys.jump.pressed = false;
 			break;
 		default:
 			break;
