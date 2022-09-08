@@ -32,6 +32,18 @@ class Sprite {
 	}
 }
 
+class SpritePlayer {
+	constructor({position,velocity,image}){
+		this.position = position;
+		this.image = playerimg;
+	}
+	draw(){
+		c.drawImage(this.image,0,0,playerimg.width / 11,
+		playerimg.height,this.position.x,this.position.y,playerwidth,
+		playerheight)
+	}
+}
+
 const background = new Sprite({
 	position: {
 		x: 60,
@@ -39,43 +51,39 @@ const background = new Sprite({
 	},image:image
 });
 
+const player = new SpritePlayer({
+	position:{
+		x : canvas.width / 2 - 150,
+		y : canvas.height / 2 + 67,
+	}
+})
+
 const keys = {
-	w : {
-		pressed: false
-	},
 	a:{
-		pressed:false
-	},
-	s:{
-		pressed:false
+		pressed:false //Left
 	},
 	d:{
-		pressed:false
+		pressed:false // Right
 	},
-	jump:{
-		pressed:false
+	space:{
+		pressed:false // jump
 	}
 }
 
 function animate() {
 	window.requestAnimationFrame(animate);
-	// console.log('animate')
-	background.draw()
+	background.draw() // unnessasary but fine
 	// player load should be after map
-	c.drawImage(
-		playerimg,
-		0,
-		0,
-		playerimg.width / 11,
-		playerimg.height,
-		canvas.width / 2 - 150,
-		canvas.height / 2 + 67,
-		playerwidth,
-		playerheight
-	);
+	player.draw();
 
-	if(keys.w.pressed){
-		background.position.y=background.position.y-3;
+	if(keys.space.pressed){
+		player.position.y=player.position.y-3;
+	}
+	if(keys.a.pressed){
+		player.position.x=player.position.x-3;
+	}
+	if(keys.d.pressed){
+		player.position.x=player.position.x+3;
 	}
 }
 animate();
@@ -83,27 +91,15 @@ animate();
 // Listen for key press
 window.addEventListener("keydown", (e) => {
 	// e stands for event
-	// console.log(e.key);
 	switch (e.key) {
-		case "w":
-			// console.log("w");
-			keys.w.pressed = true;
-			break;
 		case "a":
-			// console.log("a");
 			keys.a.pressed= true;
 			break;
-		case "s":
-			// console.log("s");
-			keys.s.pressed = true;
-			break;
 		case "d":
-			// console.log("d");
 			keys.d.pressed = true;
 			break;
 		case " ":
-			// console.log("jump");
-			keys.jump.pressed = true;
+			keys.space.pressed = true;
 			break;
 		default:
 			break;
@@ -112,27 +108,22 @@ window.addEventListener("keydown", (e) => {
 
 window.addEventListener("keyup", (e) => {
 	// e stands for event
-	// console.log(e.key);
 	switch (e.key) {
-		case "w":
-			console.log("w key up");
-			keys.w.pressed = false;
-			break;
+		// case "w":
+		// 	console.log("w key up");
+		// 	keys.w.pressed = false;
+		// 	break;
 		case "a":
-			// console.log("a");
 			keys.a.pressed= false;
 			break;
-		case "s":
-			// console.log("s");
-			keys.s.pressed = false;
-			break;
+		// case "s":
+		// 	keys.s.pressed = false;
+		// 	break;
 		case "d":
-			// console.log("d");
 			keys.d.pressed = false;
 			break;
 		case " ":
-			// console.log("jump");
-			keys.jump.pressed = false;
+			keys.space.pressed = false;
 			break;
 		default:
 			break;
